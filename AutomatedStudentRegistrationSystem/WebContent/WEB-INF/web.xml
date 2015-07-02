@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <servlet>
+    <servlet-name>AuthenticateLogin</servlet-name>
+    <servlet-class>servlets.AuthenticateLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuthenticateLogin</servlet-name>
+    <url-pattern>/AuthenticateLogin</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>SessionFilter</filter-name>
+    <filter-class>Filter.SessionFilter</filter-class>
+    <init-param>
+      <param-name>avoid-urls</param-name>
+      <param-value>/LogIn,/AuthenticateLogin,/images/back.gif</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>SessionFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <servlet-name>ListOfStudents.jsp</servlet-name>
+    <jsp-file>/Councilor/ListOfStudents.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListOfStudents.jsp</servlet-name>
+    <url-pattern>/Registrar/ListOfStudents.jsp</url-pattern>
+    <url-pattern>/Councilor/ListOfStudents.jsp</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
+    <servlet-name>RegForm.jsp</servlet-name>
+    <jsp-file>/Councilor/RegForm.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegForm.jsp</servlet-name>
+    <url-pattern>/RegForm.jsp</url-pattern>
+  </servlet-mapping>
+  
+ 
+</web-app>

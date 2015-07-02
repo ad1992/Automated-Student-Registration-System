@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="/AutomatedStudentRegistrationSystem/Jquery/jquery-ui.min.css" rel="stylesheet">
+<script src="/AutomatedStudentRegistrationSystem/Jquery/jquery-1.11.3.min.js"></script>
+<script src="/AutomatedStudentRegistrationSystem/Jquery/jquery-ui.min.css"></script>
+<script src="/AutomatedStudentRegistrationSystem/Jquery/jquery-ui.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html charset=UTF-8">
+<style>
+body{
+background-image: url(/AutomatedStudentRegistrationSystem/images/addcourse.jpeg);
+  
+}
+input[type='text'],input[type='date'] {
+    border : 3px solid #cccccc;
+    background: #C6A9E4;
+    color: white;
+    width: 250px;
+	height:30px
+
+}
+ .box{
+	border:3px;
+	margin: 0px;
+	text-align: left;	
+	margin:4%;	
+	height: 40em; 
+	width:900px;
+	padding:  4%;
+	background-color:#F1F3B0;
+	border: 4px solid blue;
+	
+	
+}
+input[type=button]{
+height:40px
+}    
+ .radio{
+ margin-left:110px;
+ position: relative;
+ }   
+input[type=submit],input[type=reset]
+{
+border-radius: 25px;
+background: #FAB469;
+width: 250px;
+height:40px;
+color: white; 
+font-weight: bold;
+}
+
+.error{
+    display: none;
+    margin-left: 10px;
+}       
+ 
+.error_show{
+    color: red;
+    font-weight:lighter;
+    font-style:oblique;
+    margin-left:10px;
+    font-size: small;
+}
+input.invalid{
+    border: 3px solid red;
+}
+ 
+input.valid{
+    border: 3px solid green;
+}
+.sub{
+position:relative;
+//display: inline;
+margin-top: 4%;
+margin-bottom: 4%;
+
+
+}
+label{
+color:#0404B4;
+font-family: fantasy;
+font-weight: bold;
+}
+.header{
+text-align: center;
+font-weight:bold;
+color:#FFFFFF ;
+background:#F75A5A;
+height:90px;
+width:auto;
+line-height: 50px;
+vertical-align: middle;
+opacity:0.5;
+border:4px solid #F21616;
+}
+</style>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	initdatepicker();
+	var watermarkCourse_Name = "Enter the Course name eg java,C";
+	var watermarkCourse_Duration ="Enter the duration in weeks";
+	var watermarkCapacity ="Enter the Capacity";
+	var watermarkStart_Date ="eg. dd/mm/yyyy";
+	var watermarkEnd_Date = "eg. dd/mm/yyyy";
+	//init, set watermark text and class
+	$('#Course_Name').val(watermarkCourse_Name ).addClass('watermark');
+	$('#Course_Duration').val(watermarkCourse_Duration).addClass('watermark');
+	$('#Capacity').val(watermarkCapacity).addClass('watermark');
+	$('#Start_Date').val(watermarkStart_Date).addClass('watermark');
+	$('#End_Date').val( watermarkEnd_Date).addClass('watermark');
+	//if blur and no value inside, set watermark text and class again.
+ 	$('#Course_Name').blur(function(){
+  		if ($(this).val().length == 0){
+    		$(this).val(watermarkCourse_Name).addClass('watermark');
+		}
+ 	});
+ 
+	//if focus and text is watermrk, set it to empty and remove the watermark class
+	$('#Course_Name').focus(function(){
+  		if ($(this).val() ==watermarkCourse_Name){
+    		$(this).val('').removeClass('watermark');
+		}
+ 	});
+	$('#Course_Duration').blur(function(){
+  		if ($(this).val().length == 0){
+    		$(this).val(watermarkCourse_Duration).addClass('watermark');
+		}
+ 	});
+ 
+	//if focus and text is watermrk, set it to empty and remove the watermark class
+	$('#Course_Duration').focus(function(){
+  		if ($(this).val() == watermarkCourse_Duration){
+    		$(this).val('').removeClass('watermark');
+		}
+ 	});
+	$('#Capacity').blur(function(){
+  		if ($(this).val().length == 0){
+    		$(this).val( watermarkCapacity).addClass('watermark');
+		}
+ 	});
+ 
+	//if focus and text is watermrk, set it to empty and remove the watermark class
+	$('#Capacity').focus(function(){
+  		if ($(this).val() ==  watermarkCapacity){
+    		$(this).val('').removeClass('watermark');
+		}
+ 	});
+	$('#Start_Date,#End_Date').blur(function(){
+  		if ($(this).val().length == 0){
+    		$(this).val(watermarkStart_Date).addClass('watermark');
+		}
+ 	});
+ 
+	//if focus and text is watermrk, set it to empty and remove the watermark class
+	$('#Start_Date,#End_Date').focus(function(){
+  		if ($(this).val() ==watermarkStart_Date){
+    		$(this).val('').removeClass('watermark');
+		}
+ 	});
+	
+	$('#Course_Name').on('input', function() {
+	    var input=$(this);
+	    console.log(input);
+	    var is_name=input.val();
+	    if(is_name){	    	
+	    	input.removeClass("invalid").addClass("valid");
+	    }
+	    else{
+	    	
+	    	input.removeClass("valid").addClass("invalid");
+	    	
+	   	}
+	});
+	
+	$('#Course_Duration,#Capacity').on('input', function() {
+	    var input=$(this);
+	    console.log(input);
+	    var re=/^\d+$/;
+	    var isvalid=re.test(input.val());	   
+	    if(isvalid){	    	
+	    	input.removeClass("invalid").addClass("valid");
+	    }
+	    else{
+	    	
+	    	input.removeClass("valid").addClass("invalid");
+	    	
+	   	}
+	});
+	
+	$('#Start_Date,#End_Date').change('input', function() {
+	    var input=$(this);	   
+	    var is_name=input.val();
+	    console.log(input);
+	    if(is_name&&!is_name!==watermarkStart_Date){	    	
+	    	input.removeClass("invalid").addClass("valid");
+	    }
+	    else{
+	    	
+	    	input.removeClass("valid").addClass("invalid");
+	    	
+	   	}
+	});
+	$('#submit').click(function(event){
+	    var form_data=$('#courseform').serializeArray();
+	   // console.log(form_data);
+	    var error_free=true;
+	    for (var input in form_data){
+	        var element=$("#"+form_data[input]['name']);	        
+	        var valid=element.hasClass("valid");	       
+	        console.log(valid+" "+element);
+	        var error_element=$("span", element.parent());
+	        if (!valid){
+	        	error_element.removeClass("error").addClass("error_show");
+	        	error_free=false;
+	        }
+	        else{
+	        	error_element.removeClass("error_show").addClass("error");
+	        }
+	    }
+	    if (!error_free){
+	    	 event.preventDefault(); 
+	    	// alert("errors");
+	    }
+	    else{
+	        alert('No errors: Course will be added');
+	    }
+	});
+	$('#reset').click(function(event){	
+	$('#Start_Date,#End_Date,#Course_Name,#Course_Duration,#Capacity').removeClass("invalid valid");
+	$("span").removeClass("error_show").addClass("error");
+	/*$('#Course_Name').val(watermarkCourse_Name ).addClass('watermark');
+	$('#Course_Duration').val(watermarkCourse_Duration).addClass('watermark');
+	$('#Capacity').val(watermarkCapacity).addClass('watermark');
+	$('#Start_Date').val(watermarkStart_Date).addClass('watermark');
+	$('#End_Date').val( watermarkEnd_Date).addClass('watermark');*/
+	});	
+	$( "#Start_Date" ).datepicker();	
+	$( "#End_Date" ).datepicker();
+	
+});
+function initdatepicker(){
+	$('.Date').datepicker({
+		  dateFormat:'dd-mm-yy'
+		});
+	
+}
+</script>
+<meta charset="UTF-8">
+<title>New Course</title>
+</head>
+<body>
+<div class="header">
+<a href='/AutomatedStudentRegistrationSystem/Welcome' title="Home"><img alt="" src="/AutomatedStudentRegistrationSystem/images/home.png" width="100" height="100" border="0" style="float:left;" ></a>
+<h1 align="center"><b>Fill the Details for the new Course</b></h1></div>
+<div class="box">
+<form id="courseform" action="NewCourse" method="post" >
+
+<div class="sub">
+<label for="Course_Name">Name of the Course :</label>
+ <input type="text" required="required" id="Course_Name" placeholder="Enter the Course name eg java,C" name="Course_Name" style="margin-left:45px;"/>
+  <span class="error">This field is required</span>
+</div>
+<div class="sub">
+<label for="Course_Duration">Course Duration :</label>
+<input type="text" required="required" id="Course_Duration" name="Course_Duration" placeholder="Enter the duration in weeks" style="margin-left:78px;" />
+<span class="error">Enter a valid duration</span>
+</div>
+<div class="sub">
+<label>Start Date</label>
+<input type="text" id="Start_Date" class="Date" name="Start_Date"  placeholder="eg. dd/mm/yyyy" style=" margin-left:139.5px;"/>
+<span class="error">This field is required</span>
+</div>
+
+<div class="sub">
+<label>End Date</label>
+<input type="text" id="End_Date" class="Date" name="End_Date" placeholder="eg. dd/mm/yyyy" style="margin-left:152px;"/>
+<span class="error">This field is required</span>
+</div>
+
+<div class="sub">
+<label for="Capacity">Capacity :</label>
+<input type="text" required="required" id="Capacity" name="Capacity" placeholder="Enter the Capacity" style="margin-left:142px;" />
+<span class="error">Enter a valid capacity</span><br /><br />
+</div>
+<div class="sub">
+<input type="submit" id="submit" value="Submit" style="width: 250px;height:35px;"/>
+<input type="reset" id="reset" value="Reset"style="width: 250px;height:35px;margin-left: 100px;" />
+ </div>
+ </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Login Page</title>
+</head>
+<style>
+.box{
+width:220px;
+padding:10px;
+border:5px solid gray;
+margin:0px;
+background-color:white;
+text-align:center;
+position:fixed;
+top: 50%;left: 50%;
+width:20em;
+height:25em;
+margin-top: -9em; 
+margin-left: -10em;
+
+opacity:0.9;
+
+}
+.header{
+text-align: center;
+font-weight:bold;
+color:#FFFFFF ;
+background: #EC6262;
+height:90px;
+width:auto;
+line-height: 50px;
+vertical-align: middle;
+opacity:0.9;
+margin: 4%;
+border:4px solid #EA0707;
+}
+input[type=submit]
+{
+border-radius: 25px;
+background: #FAB469;
+width: 250px;
+height:40px;
+}
+input[type=text],
+input[type=password]
+{
+background: #C6A9E4;
+color:white;
+font-weight: bolder;
+}
+.radio{
+color: #EC6262;
+font-weight: bolder;
+position:relative;
+
+}
+body{
+text-align:center;
+background-image: url(images/back.gif);
+}
+</style>
+<body>
+
+<div class="header">
+<h1>
+Welcome to the Elixir Institute Of Learning</h1>
+</div>
+<form method="post" action="AuthenticateLogin">
+<div class="box"> 
+<br><br><br>
+ <input type="text" name="Username" placeholder="Enter your username" required="required" style="width: 250px;height:40px;"><br><br><br><br>
+ <input type ="password" name ="Password" placeholder="Enter your password"  required="required" style="width: 250px;height:40px;" />
+ <br><br><br><br>
+ <div class="radio">
+ <input type="radio" name="Post" value="Councilor" checked="checked">Councilor
+<input type="radio" name="Post" value="Registrar">Registrar
+</div>
+<br><br><br><br>
+<input type="submit" value="Log in"/>&nbsp;&nbsp;&nbsp;
+</div>
+</form>
+</body>
+</html>
