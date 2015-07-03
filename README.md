@@ -1,4 +1,4 @@
-﻿# Automated-Student-Registration-System
+# Automated-Student-Registration-System
 <b>My first Java EE Web Application developed during college days</b>
 
 >#### It is  a simple Java EE web application with two types of users namely Registrar and Councilor to automate the process of registration of a student in a particular course(C,C++,Java,J2EE,Mysql etc).
@@ -39,11 +39,11 @@
 
 4. The login page will show up.The username and password of councilor and registrar is given in the **/src/database/createDatabase.java**.
 
-Designation	|	Username	|	Password
----------   |  ---------|   ---------
-Councilor 	|	 Coun101	|	c101
-Councilor	  |  Coun102	|	c102
-Registrar	  |	 Reg191		| reg1
+  Designation	|	Username	|	Password
+  ---------   |  ---------|   ---------
+  Councilor 	|	 Coun101	|	c101
+  Councilor	  |  Coun102	|	c102
+  Registrar	  |	 Reg191		| reg1
 
 
 Once Logged in,the welcome page will be displayed with several options depending upon the designation of the user
@@ -51,5 +51,6 @@ Once Logged in,the welcome page will be displayed with several options depending
 I have also added **screen shots** which will give a better view of the project.
 
 This project might contain errors as this is my first web app.I will be adding more features to the project.
+
 
 
