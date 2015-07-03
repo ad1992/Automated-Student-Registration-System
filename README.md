@@ -28,10 +28,9 @@
 
 2. The username is `root` and password is `Password` for the database.Please change the password in all files inside servlets folder and database  folder in case the password differs.
     ``` 
-    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/",
-					"root", "Password");
-  	```
-  	Replace `root` and `Password` with your own username and password
+    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/","root", "Password");
+    ```
+  Replace `root` and `Password` with your own username and password
 	
 
 3. Once the database is created.Start the server and paste this url in the browser  
@@ -51,6 +50,7 @@ Once Logged in,the welcome page will be displayed with several options depending
 I have also added **screen shots** which will give a better view of the project.
 
 This project might contain errors as this is my first web app.I will be adding more features to the project.
+
 
 
 
