@@ -15,55 +15,59 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
-
-
 /**
- * Servlet implementation class All_Courses_Servlet
+ * This servlet uses gson library to convert java list to json strings.It
+ * returns response to RegForm.jsp when Jquery fires an ajax request via get()
+ * method in RegForm.jsp.The list contains the name of all courses. 
+ * 
+ * @author Aakansha Doshi
+ * 
  */
-@WebServlet(urlPatterns ={"/All_Courses_Servlet"})
+@WebServlet(urlPatterns = { "/All_Courses_Servlet" })
 public class All_Courses_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Connection con;
 	Statement stmt;
 	String sql;
-	ResultSet rs;  
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public All_Courses_Servlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	ResultSet rs;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public All_Courses_Servlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
 
 			Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("Creating connection");
-			con = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/Students",
-							"root", "Password");
+			con = DriverManager.getConnection(
+					"jdbc:mysql://localhost:3306/Students", "root", "Password");
 			System.out.println("Creating Statemnet");
 			stmt = con.createStatement();
-			sql="select * from  Course_details ";
-			ResultSet rs=stmt.executeQuery(sql);
-			List<String> list = new ArrayList<String>();	
-			while(rs.next())
-			{
-				int vacancy=rs.getInt("Vacancy");
-				if(vacancy>0){
+			sql = "select * from  Course_details ";
+			ResultSet rs = stmt.executeQuery(sql);
+			List<String> list = new ArrayList<String>();
+			while (rs.next()) {
+				int vacancy = rs.getInt("Vacancy");
+				if (vacancy > 0) {
 					list.add(rs.getString("CourseName"));
 				}
 			}
 			String json = null;
-	        json = new Gson().toJson(list);
-	        response.setContentType("application/json");
-	        response.getWriter().write(json);
-			
+			json = new Gson().toJson(list);
+			response.setContentType("application/json");
+			response.getWriter().write(json);
+
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,33 +75,32 @@ public class All_Courses_Servlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		finally{
+
+		finally {
 			try {
-				if(rs!=null)
+				if (rs != null)
 					rs.close();
-				if(stmt!=null)
+				if (stmt != null)
 					stmt.close();
-				if(con!=null)
+				if (con != null)
 					con.close();
-				if(stmt!=null)
+				if (stmt != null)
 					stmt.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-					
-			
+
 		}
-			
-		
-			
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 

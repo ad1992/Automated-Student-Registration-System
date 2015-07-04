@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
- * Servlet implementation class LogIn
+ * This servlet forwards to LoginPage.html on recieving get request.
+ * @author Aakansha Doshi
+ *
  */
 @WebServlet("/LogIn")
 public class LogIn extends HttpServlet {

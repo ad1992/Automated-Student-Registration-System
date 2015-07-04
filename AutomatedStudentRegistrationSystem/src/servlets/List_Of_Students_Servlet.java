@@ -20,7 +20,13 @@ import com.google.gson.Gson;
 
 
 /**
- * Servlet implementation class List_Of_Students_Servlet
+ * This servlet uses gson library to convert java list to json strings.It
+ * returns the response back to ListOfStudents.jsp when the Jquery fires an ajax
+ * request via get() method in ListOfStudents.jsp.The response is based on the
+ * value of parameter id which refers to Course_Id in Student_Courses table.
+ * 
+ * @author Aakansha Doshi
+ * 
  */
 @WebServlet("/List_Of_Students_Servlet")
 public class List_Of_Students_Servlet extends HttpServlet {

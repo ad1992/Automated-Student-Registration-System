@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class InvalidateSession
+ * This servlet destroys session on recieving get request.
+ * @author Aakansha Doshi
+ *
  */
 @WebServlet("/InvalidateSession")
 public class InvalidateSession extends HttpServlet {

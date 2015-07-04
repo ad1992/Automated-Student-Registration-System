@@ -16,8 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+
 /**
- * Servlet implementation class StudentProfileServlet
+ * This servlet uses gson library to convert java list to json strings.It
+ * returns the response back to  Studentsprofile.jsp when the Jquery fires an ajax
+ * request via get() method in Studentsprofile.jsp.
+ * @author Aakansha Doshi
+ *
  */
 @WebServlet(urlPatterns ={"/Councilor/StudentProfileServlet"})
 public class StudentProfileServlet extends HttpServlet {
